@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parrot-app-deployment
+  labels:
+    app: parrot-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: parrot-app
+  template:
+    metadata:
+      labels:
+        app: parrot-app
+    spec:
+      containers:
+      - name: parrot-app
+        image: alex/parrot-app:v15
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: parrot-db
+                key: mariadb-root-password
