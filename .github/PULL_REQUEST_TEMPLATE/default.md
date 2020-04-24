@@ -1,0 +1,3 @@
+# Default Template
+
+:fireworks:
