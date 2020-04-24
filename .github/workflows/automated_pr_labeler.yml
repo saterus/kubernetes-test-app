@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Label PRs
-      if: github.event.action == 'opened' # Only run the action when the PR was first opened
+       # Only run the action when the PR on specific events:
+      if: github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'edited' || github.event.action == 'ready_for_review'
       uses: ffittschen/pr-branch-labeler@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
