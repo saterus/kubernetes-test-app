@@ -1,0 +1,15 @@
+name: Automated Branch Labeler
+
+on: pull_request
+
+jobs:
+  label_prs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Label PRs
+       # Only run the action when the PR on specific events:
+      if: github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'edited' || github.event.action == 'ready_for_review'
+      uses: ffittschen/pr-branch-labeler@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
