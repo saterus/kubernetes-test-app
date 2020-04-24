@@ -1,0 +1,20 @@
+# Apply labels if PR's base branch matches:
+#################################################################
+
+release:
+  base: "release/*"
+
+production:
+  base: "master"
+
+train:
+  base: "train/*"
+
+# Apply labels if PR's branch name matches:
+#################################################################
+
+hotfix:
+  head: ["hotfix/*"]
+
+doc:
+  head: ["doc/*"]
